@@ -1,7 +1,7 @@
 <template>
   <header>
       <div>
-        logo
+        <img src="../assets/boolflix.png" alt="">
       </div>
       <div>
         <input @keyup.enter="$emit('search', inputKey)" type="text" v-model="inputKey">
@@ -36,7 +36,6 @@ export default {
     div {
         width: 250px;
         height: 70px;
-        background-color: paleturquoise;
         line-height: 70px;
         text-align: center;
         display: flex;

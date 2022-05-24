@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <BoolflixHeader @search="searchFilms" />
-    <BoolflixMain :showsFound="resultsFound" />
+    <BoolflixMain :filmsFound="inputFilmsFound" :seriesFound="inputSeriesFound" />
   </div>
 </template>
 
@@ -19,40 +19,36 @@ export default {
   },
   data: function () {
     return {
-      resultsFound: [
-        {
-          inputFilmsFound: [],
-        },
-        {
-          inputSeriesFound: [],
-        },
-      ],
-      filmsApi: [
-        "https://api.themoviedb.org/3/search/movie",
-        "https://api.themoviedb.org/3/search/tv",
-      ],
+      resultsFound: [],
+      inputFilmsFound: [],
+      inputSeriesFound: [],
     };
   },
 
   methods: {
     searchFilms(inputKey) {
-      for (let i = 0; i < this.filmsApi.length; i++) {
-        axios
-          .get(`${this.filmsApi[i]}`, {
+      axios
+          .get("https://api.themoviedb.org/3/search/movie", {
             params: {
               api_key: "71b7bde2de09a826a8388d622891aa6b",
               query: inputKey,
             },
           })
           .then((resp) => {
-            this.resultsFound[i] = resp.data.results;
-
-            for (let i = 0; i < this.filmsApi.length; i++) {
-              console.log(this.resultsFound[i]);
-            }
+            this.inputFilmsFound = resp.data.results;
           }
         );
-      }
+        axios
+          .get("https://api.themoviedb.org/3/search/tv", {
+            params: {
+              api_key: "71b7bde2de09a826a8388d622891aa6b",
+              query: inputKey,
+            },
+          })
+          .then((resp) => {
+            this.inputSeriesFound = resp.data.results;
+          }
+        );
     },
   },
 };

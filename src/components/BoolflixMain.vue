@@ -1,9 +1,24 @@
 <template>
   <main>
-      <div class="container" v-for="(item, i) in showsFound" :key="i">
-          {{ item }}
-        <!-- <BoolflixCard v-for="(films, index) in item[index]" :key="index" :film="films[index]" /> -->
-      </div>
+    <div class="container">
+      <h1>Movies</h1>
+      <section>
+        <BoolflixCard
+          v-for="(film, i) in filmsFound"
+          :key="i"
+          :film="filmsFound[i]"
+        />
+      </section>
+
+      <h1>Series</h1>
+      <section>
+        <BoolflixCard
+          v-for="(series, i) in seriesFound"
+          :key="i"
+          :serie="seriesFound[i]"
+        />
+      </section>
+    </div>
   </main>
 </template>
 
@@ -11,33 +26,38 @@
 import BoolflixCard from "./BoolflixCard.vue";
 
 export default {
-    name: "BoolflixMain",
+  name: "BoolflixMain",
 
-    props: {
-        showsFound: Array
-    },
+  props: {
+    filmsFound: Array,
+    seriesFound: Array,
+  },
 
-    components: {
-        BoolflixCard,
-    },
-}
+  components: {
+    BoolflixCard,
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-    main {
-        width: 100%;
-        height: calc(100vh - 100px);
-        background-color: darkseagreen;
-        overflow: auto;
-        padding-top: 3rem;
+main {
+  width: 100%;
+  height: calc(100vh - 100px);
+  background-color: darkseagreen;
+  overflow: auto;
+  padding-top: 3rem;
+  text-align: center;
 
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: flex-start;
-            justify-content: space-between;
-        }
+  .container {
+    width: 80%;
+    margin: 0 auto;
+
+    section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
     }
+  }
+}
 </style>
