@@ -1,7 +1,8 @@
 <template>
   <main>
-      <div class="container">
-        <BoolflixCard v-for="(film, index) in filmsArray" :key="index" :film="filmsArray[index]" />
+      <div class="container" v-for="(item, i) in showsFound" :key="i">
+          {{ item }}
+        <!-- <BoolflixCard v-for="(films, index) in item[index]" :key="index" :film="films[index]" /> -->
       </div>
   </main>
 </template>
@@ -13,7 +14,7 @@ export default {
     name: "BoolflixMain",
 
     props: {
-        filmsArray: Array
+        showsFound: Array
     },
 
     components: {

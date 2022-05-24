@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <BoolflixHeader @search="searchFilms" />
-    <BoolflixMain />
+    <BoolflixMain :showsFound="resultsFound" />
   </div>
 </template>
 
@@ -21,15 +21,15 @@ export default {
     return {
       resultsFound: [
         {
-          inputFilmsFound: "",
+          inputFilmsFound: [],
         },
         {
-          inputSeriesFound: "",
+          inputSeriesFound: [],
         },
       ],
       filmsApi: [
-        "https://api.themoviedb.org/3/search/movie?",
-        "https://api.themoviedb.org/3/search/tv?",
+        "https://api.themoviedb.org/3/search/movie",
+        "https://api.themoviedb.org/3/search/tv",
       ],
     };
   },
