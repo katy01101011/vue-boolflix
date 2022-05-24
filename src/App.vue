@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <BoolflixHeader @search="searchFilms" />
-    <BoolflixMain :filmsArray="filmsFound" />
+    <BoolflixMain />
   </div>
 </template>
 
@@ -21,10 +21,10 @@ export default {
     return {
       resultsFound: [
         {
-          filmsFound: "",
+          inputFilmsFound: "",
         },
         {
-          seriesFound: "",
+          inputSeriesFound: "",
         },
       ],
       filmsApi: [
