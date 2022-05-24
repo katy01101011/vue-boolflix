@@ -2,16 +2,21 @@
   <section>
     <h2>{{ this.film.title }}</h2>
     <h3>{{ this.film.original_title }}</h3>
-    <p>{{ this.film.original_language }}</p>
+    <country-flag :country="`${this.film.original_language}`"/>
     <p>{{ this.film.vote_average }}</p>
   </section>
 </template>
 
 <script>
+import CountryFlag from 'vue-country-flag';
+
 export default {
     name: "BoolflixCard",
     props: {
       film: Object
+    },
+    components: {
+      CountryFlag
     }
 }
 </script>
