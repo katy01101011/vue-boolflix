@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <BoolflixHeader @search="searchFilms" />
-    <BoolflixMain :filmsArray="filmsFound"/>
+    <BoolflixMain :filmsArray="filmsFound" />
   </div>
 </template>
 
@@ -9,7 +9,7 @@
 import BoolflixHeader from "./components/BoolflixHeader.vue";
 import BoolflixMain from "./components/BoolflixMain.vue";
 
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   name: "App",
@@ -17,29 +17,44 @@ export default {
     BoolflixHeader,
     BoolflixMain,
   },
-  data: function() {
+  data: function () {
     return {
-      filmsFound: []
-    }
+      resultsFound: [
+        {
+          filmsFound: "",
+        },
+        {
+          seriesFound: "",
+        },
+      ],
+      filmsApi: [
+        "https://api.themoviedb.org/3/search/movie?",
+        "https://api.themoviedb.org/3/search/tv?",
+      ],
+    };
   },
 
   methods: {
     searchFilms(inputKey) {
-      axios
-      .get('https://api.themoviedb.org/3/search/movie?', {
-        params: {
-          api_key: "71b7bde2de09a826a8388d622891aa6b",
-          query: inputKey
+      for (let i = 0; i < this.filmsApi.length; i++) {
+        axios
+          .get(`${this.filmsApi[i]}`, {
+            params: {
+              api_key: "71b7bde2de09a826a8388d622891aa6b",
+              query: inputKey,
+            },
+          })
+          .then((resp) => {
+            this.resultsFound[i] = resp.data.results;
+
+            for (let i = 0; i < this.filmsApi.length; i++) {
+              console.log(this.resultsFound[i]);
+            }
           }
-        }
-      )
-      .then((resp) => {
-        this.filmsFound = resp.data.results;
-        console.log(this.filmsFound);
+        );
       }
-      );
-    }
-  }
+    },
+  },
 };
 </script>
 
