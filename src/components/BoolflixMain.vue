@@ -54,6 +54,7 @@ main {
     text-align: start;
 
     h1 {
+      margin-top: 5rem;
       margin-bottom: 5rem;
       font-size: 3rem;
       font-weight: 100;
