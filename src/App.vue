@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <BoolflixHeader @search="searchFilms" />
     <div v-if="loading" class="load">
-    <BoolflixStart />
+      <BoolflixHeader @search="searchFilms" />
+      <BoolflixStart />
     </div>
-    
+
     <div v-else>
-      <!-- <BoolflixHeader @search="searchFilms" /> -->
+      <BoolflixHeader @search="searchFilms" />
       <BoolflixMain
         :filmsFound="inputFilmsFound"
         :seriesFound="inputSeriesFound"
@@ -73,6 +73,6 @@ export default {
 #app {
   width: 100%;
   height: 100vh;
-  background-color: black;
+  background-color: black
 }
 </style>

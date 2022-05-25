@@ -85,6 +85,7 @@ header {
   height: 100px;
   padding-left: 5rem;
   padding-right: 5rem;
+  background-color: transparent;
   background: linear-gradient(
     0deg,
     rgba(0, 0, 0, 0) 0%,
