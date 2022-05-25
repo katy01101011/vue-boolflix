@@ -49,8 +49,15 @@ main {
   text-align: center;
 
   .container {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
+    text-align: start;
+
+    h1 {
+      margin-bottom: 5rem;
+      font-size: 3rem;
+      font-weight: 100;
+    }
 
     section {
       display: flex;
