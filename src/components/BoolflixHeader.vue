@@ -18,7 +18,10 @@
         class="search-input-container"
         v-if="this.isClicked"
       >
-        <i @click="clicked()" class="fas fa-search"></i>
+        <i v-if="inputKey" @click="
+          $emit('search', inputKey);
+        " class="fas fa-search"></i>
+        <i v-else @click="clicked()" class="fas fa-search"></i>
         <input
           class="search__input"
           @keyup.enter="$emit('search', inputKey)"
@@ -30,10 +33,7 @@
       <button
         v-if="this.isClicked === false"
         class="search__click"
-        @click="
-          $emit('search', inputKey);
-          clicked();
-        "
+        @click="clicked"
       >
         <i class="fas fa-search"></i>
       </button>
@@ -46,9 +46,9 @@ export default {
   name: "BoolflixHeader",
 
   methods: {
-    clicked: function () {
+    clicked: function() {
       this.isClicked = !this.isClicked;
-    },
+    }
   },
 
   data: function () {
