@@ -4,12 +4,11 @@
       <img :src="`https://image.tmdb.org/t/p/w200${this.film.poster_path}`" alt="">
       <h2>{{ this.film.title }}</h2>
       <h3>{{ this.film.original_title }}</h3>
-      
+    
       <country-flag :country="`${this.film.original_language}`" />
       <div>
         <i v-for="star in stars(this.film.vote_average)" :key="star" class="fa-solid fa-star"></i>
       </div>
-      
     </div>
 
 
@@ -21,7 +20,6 @@
       <div>
         <i v-for="star in stars(this.serie.vote_average)" :key="star" class="fa-solid fa-star"></i>
       </div>
-      <p>{{ this.seriesStars }}</p>
     </div>
   </section>
 </template>

@@ -18,7 +18,7 @@
         class="search-input-container"
         v-if="this.isClicked"
       >
-        <i @click="clicked()" class="fa-solid fa-magnifying-glass"></i>
+        <i @click="clicked()" class="fas fa-search"></i>
         <input
           class="search__input"
           @keyup.enter="$emit('search', inputKey)"
@@ -35,7 +35,7 @@
           clicked();
         "
       >
-        <i class="fa-solid fa-magnifying-glass"></i>
+        <i class="fas fa-search"></i>
       </button>
     </div>
   </header>
