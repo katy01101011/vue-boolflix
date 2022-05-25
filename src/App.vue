@@ -147,6 +147,7 @@ export default {
         i {
           font-size: 2.5rem;
           margin-right: 0.8rem;
+          color: black;
         }
 
         .info-icon {
@@ -164,6 +165,7 @@ export default {
 
       .play-btn {
         background-color: white;
+        color: black;
 
         &:hover {
           background-color: rgba($color: #ffffff, $alpha: 0.85);
