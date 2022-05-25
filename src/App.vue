@@ -4,7 +4,7 @@
       <BoolflixHeader @search="searchFilms" />
       <div class="load__info">
         <div class="n-serie">
-          <img class="n-logo" src="./assets/n-logo.png" alt="" />
+          <img class="n-logo" src="./assets/k-logo.png" alt="" />
           <span> S E R I E</span>
         </div>
         <img src="./assets/russian_logo.png" alt="" />
