@@ -55,7 +55,7 @@ div {
   .card {
     width: 200px;
     border: 1px solid black;
-    margin: 1rem;
+    margin-right: .1rem;
   }
 }
 </style>

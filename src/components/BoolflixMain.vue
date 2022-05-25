@@ -43,7 +43,7 @@ export default {
 main {
   width: 100%;
   height: calc(100vh - 100px);
-  background-color: darkseagreen;
+  background-color: black;
   overflow: auto;
   padding-top: 3rem;
   text-align: center;

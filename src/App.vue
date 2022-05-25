@@ -90,6 +90,7 @@ export default {
 #app {
   width: 100%;
   height: calc(100vh);
+  background-color: black;
 
   .load {
     width: 100%;
