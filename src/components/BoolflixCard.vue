@@ -36,7 +36,7 @@ export default {
     film: Object,
     serie: Object,
   },
-  
+
   methods: {
     stars(vote) {
       return Math.ceil(vote / 2);
