@@ -8,25 +8,29 @@
         />
       </div>
       <div class="card__info">
-        <h2>{{ this.film.title.toUpperCase() }}</h2>
-        <h3>{{ this.film.original_title }}</h3>
-        <span v-if="this.languages.includes(this.film.original_language)">
-          <img
-            class="flag-icon"
-            :src="require(`../assets/flags/${this.film.original_language}.png`)"
-            alt=""
-          />
-        </span>
-        <div class="no-flag-icon" v-else>
-          {{ this.film.original_language.toUpperCase() }}
-        </div>
-        <div>
-          <span v-for="n in 5" :key="n">
-            <i
-              :class="n <= voteStars(film.vote_average) ? 'fas' : 'far'"
-              class="fa-star"
-            ></i>
+        <div class="card__info__bottom">
+          <h2>{{ this.film.title.toUpperCase() }}</h2>
+          <h3>{{ this.film.original_title }}</h3>
+          <div>
+            <span v-for="n in 5" :key="n">
+              <i
+                :class="n <= voteStars(film.vote_average) ? 'fas' : 'far'"
+                class="fa-star"
+              ></i>
+            </span>
+          </div>
+          <span v-if="this.languages.includes(this.film.original_language)">
+            <img
+              class="flag-icon"
+              :src="
+                require(`../assets/flags/${this.film.original_language}.png`)
+              "
+              alt=""
+            />
           </span>
+          <div class="no-flag-icon" v-else>
+            {{ this.film.original_language.toUpperCase() }}
+          </div>
         </div>
       </div>
     </div>
@@ -44,7 +48,9 @@
         <span v-if="this.languages.includes(this.serie.original_language)">
           <img
             class="flag-icon"
-            :src="require(`../assets/flags/${this.serie.original_language}.png`)"
+            :src="
+              require(`../assets/flags/${this.serie.original_language}.png`)
+            "
             alt=""
           />
         </span>
@@ -111,15 +117,16 @@ div {
       align-items: center;
 
       h2 {
-        font-size: 2.5rem;
+        font-size: 1.6rem;
       }
 
       h3 {
-        font-size: 1.7rem;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
       }
 
       span {
-        font-size: 2rem;
+        font-size: 1.5rem;
 
         i {
           color: rgb(255, 248, 149);
@@ -141,22 +148,33 @@ div {
       width: 342px;
       height: 500px;
       display: none;
-      background-color: rgba($color: #000000, $alpha: 0.7);
-      text-align: center;
+      position: relative;
+
+      &__bottom {
+        width: 100%;
+        height: 45%;
+        background-color: #1d1d1d;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 1.5rem 2rem;
+        text-align: start;
+        overflow: scroll;
+      }
     }
 
     .flag-icon {
-      width: 4rem;
-      margin: 2rem;
+      width: 2rem;
+      margin-top: 1rem;
     }
 
     .no-flag-icon {
       display: inline-block;
-      width: 4rem;
-      height: 4rem;
+      width: 2rem;
+      height: 2rem;
       border-radius: 50%;
       background-color: rgb(212, 56, 56);
-      line-height: 4rem;
+      line-height: 2rem;
       text-align: center;
       font-size: 1.3rem;
       font-weight: bold;
