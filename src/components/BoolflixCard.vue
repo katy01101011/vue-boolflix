@@ -1,11 +1,14 @@
 <template>
   <section>
     <div class="card" v-if="film">
-      <div class="card__poster">
+      <div class="card__poster" v-if="this.film.poster_path">
         <img
           :src="`https://image.tmdb.org/t/p/w342${this.film.poster_path}`"
           alt=""
         />
+      </div>
+      <div v-else class="card__poster no-img">
+        <h2>{{ this.film.title.toUpperCase() }}</h2>
       </div>
       <div class="card__info">
         <div class="card__info__bottom">
@@ -36,6 +39,44 @@
     </div>
 
     <div class="card" v-if="serie">
+      <div class="card__poster" v-if="this.serie.poster_path">
+        <img
+          :src="`https://image.tmdb.org/t/p/w342${this.serie.poster_path}`"
+          alt=""
+        />
+      </div>
+      <div v-else class="card__poster no-img">
+        <h2>{{ this.serie.name.toUpperCase() }}</h2>
+      </div>
+      <div class="card__info">
+        <div class="card__info__bottom">
+          <h2>{{ this.serie.name.toUpperCase() }}</h2>
+          <h3>{{ this.serie.original_name }}</h3>
+          <div>
+            <span v-for="n in 5" :key="n">
+              <i
+                :class="n <= voteStars(serie.vote_average) ? 'fas' : 'far'"
+                class="fa-star"
+              ></i>
+            </span>
+          </div>
+          <span v-if="this.languages.includes(this.serie.original_language)">
+            <img
+              class="flag-icon"
+              :src="
+                require(`../assets/flags/${this.serie.original_language}.png`)
+              "
+              alt=""
+            />
+          </span>
+          <div class="no-flag-icon" v-else>
+            {{ this.serie.original_language.toUpperCase() }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="card" v-if="serie">
       <div class="card__poster">
         <img
           :src="`https://image.tmdb.org/t/p/w342${this.serie.poster_path}`"
@@ -66,7 +107,7 @@
           </span>
         </div>
       </div>
-    </div>
+    </div> -->
   </section>
 </template>
 
@@ -144,6 +185,12 @@ div {
       }
     }
 
+    .no-img {
+      text-align: center;
+      padding-top: 1.1rem;
+      font-size: 1.7rem;
+    }
+
     &__info {
       width: 342px;
       height: 500px;
@@ -179,7 +226,7 @@ div {
       font-size: 1.3rem;
       font-weight: bold;
       text-align: center;
-      margin: 2rem;
+      margin-top: 1rem;
     }
   }
 }
