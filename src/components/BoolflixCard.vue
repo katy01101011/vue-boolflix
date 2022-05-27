@@ -34,7 +34,14 @@
           <div class="no-flag-icon" v-else>
             {{ this.film.original_language.toUpperCase() }}
           </div>
-          <p>{{ this.filmCast.cast }}</p>
+          <ul class="cast">
+            <h2>Cast</h2>
+            <li v-for="(el, i) in this.filmCast" :key="i">
+              <span v-if="i < 5">
+                {{ el.name }}
+              </span>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -209,6 +216,13 @@ div {
         padding: 1.5rem 2rem;
         text-align: start;
         overflow: scroll;
+
+        .cast {
+          h2 {
+            margin-top: 1rem;
+            margin-bottom: .5rem;
+          }
+        }
       }
     }
 

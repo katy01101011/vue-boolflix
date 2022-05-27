@@ -7,7 +7,7 @@
           v-for="(film, i) in filmsFound"
           :key="i"
           :film="filmsFound[i]"
-          :filmCast="filmsCast"
+          :filmCast="filmsCast[i]"
         />
       </section>
 
