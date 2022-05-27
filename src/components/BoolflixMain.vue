@@ -7,6 +7,7 @@
           v-for="(film, i) in filmsFound"
           :key="i"
           :film="filmsFound[i]"
+          :filmCast="filmsCast"
         />
       </section>
 
@@ -31,6 +32,7 @@ export default {
   props: {
     filmsFound: Array,
     seriesFound: Array,
+    filmsCast: Array
   },
 
   components: {

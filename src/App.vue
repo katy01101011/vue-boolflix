@@ -10,6 +10,7 @@
       <BoolflixMain
         :filmsFound="inputFilmsFound"
         :seriesFound="inputSeriesFound"
+        :filmsCast="filmCast"
       />
     </div>
   </div>
@@ -33,11 +34,11 @@ export default {
     return {
       resultsFound: [],
       inputFilmsFound: [],
+      filmsId: [],
       filmCast: [],
       searieCast: [],
       inputSeriesFound: [],
       loading: true,
-      filmsId: [],
     };
   },
 
@@ -52,27 +53,19 @@ export default {
         })
         .then((resp) => {
           this.inputFilmsFound = resp.data.results;
-          axios
-            .get(
-              `https://api.themoviedb.org/3/movie/480/credits?api_key=71b7bde2de09a826a8388d622891aa6b`,
-              {
-                params: {
-                  api_key: "71b7bde2de09a826a8388d622891aa6b",
-                },
-              }
-            )
+          const inputFilms = this.inputFilmsFound;
+          inputFilms.forEach((e, i) => {
+            axios
+            .get(`https://api.themoviedb.org/3/movie/${inputFilms[i].id}/credits?api_key=71b7bde2de09a826a8388d622891aa6b`)
             .then((r) => {
-              r.data.cast.forEach((actor, index) => {
-                this.filmsId.push(resp.data.results[index].id);
-                // console.log(this.filmsId);
-              });
-              this.filmsId.forEach((id, index) => {
-                for (let i = 0; i < 5; i++) {
-                  console.log(r);
-                  
-                }
-              });
-            });
+              this.filmCast.push(r.data.cast);
+              // console.log(this.filmCast);
+              // console.log(this.filmCast[0].name);
+              // console.log(e.id);
+              // console.log(inputFilms[i].id);
+            })
+          });
+          console.log(this.filmCast);
         });
       axios
         .get("https://api.themoviedb.org/3/search/tv", {

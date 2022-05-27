@@ -34,6 +34,7 @@
           <div class="no-flag-icon" v-else>
             {{ this.film.original_language.toUpperCase() }}
           </div>
+          <p>{{ this.filmCast.cast }}</p>
         </div>
       </div>
     </div>
@@ -124,6 +125,7 @@ export default {
   props: {
     film: Object,
     serie: Object,
+    filmCast: Array,
   },
 
   methods: {
