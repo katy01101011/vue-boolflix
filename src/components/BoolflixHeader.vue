@@ -48,7 +48,7 @@ export default {
   methods: {
     clicked: function() {
       this.isClicked = !this.isClicked;
-    }
+    },
   },
 
   data: function () {
